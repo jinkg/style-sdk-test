@@ -7,8 +7,6 @@ import android.content.res.Resources;
 
 import com.yalin.style.engine.resource.ResourcesManager;
 
-import dalvik.system.DexClassLoader;
-
 
 /**
  * @author jinyalin
@@ -42,7 +40,7 @@ public class ComponentContext extends ContextWrapper {
 
     private ClassLoader getClassLoader(String componentFilePath) {
         if (mClassLoader == null) {
-            mClassLoader = new DexClassLoader(componentFilePath, getCacheDir().getAbsolutePath(),
+            mClassLoader = new StyleClassLoader(this, componentFilePath, getCacheDir().getAbsolutePath(),
                     null, getBaseContext().getClassLoader());
         }
         return mClassLoader;
